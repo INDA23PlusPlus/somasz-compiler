@@ -1,0 +1,55 @@
+<translation_unit> ::= <function> | <function> <translation_unit>
+
+<function> ::= "fn" <whitespace> <idnetifier> "(" <argument>* <whitespace>? ")" <whitespace>? <block_statemant> <end_of_line>?
+
+<statement_list> ::= <statement> | <statement> <statement_list>
+
+<statement> ::= <decalration> | <if_statemnt> | <return> 
+
+<return> ::= "return" <whitespace>? <epxression> ";"
+
+<if_statemnt> ::= "if" <whitespace>? <epxression> <whitespace>? <block_statemant> | "if" <whitespace>? <epxression> <whitespace>? <block_statemant> <whitespace>? "else" <block_statemant>
+
+<primary_exp> ::= <idnetifier> | <integer> | "(" <epxression> ")"
+
+<unary_op> ::= "!" | "~"
+
+<func_call> ::= <idnetifier> "(" <argument>* ")"  
+
+<unary_exp> ::= <unary_op>? <func_call> | <primary_exp>
+
+<mult_exp> ::= <unary_exp> | <mult_exp> "*" <unary_exp> | <mult_exp> "/" <unary_exp> | <mult_exp> "%" <unary_exp>
+
+<add_exp> ::= <mult_exp> | <add_exp> "+" <mult_exp> | <add_exp> "-" <mult_exp>
+
+<comp_exp> ::= <add_exp> | <comp_exp> ">" <add_exp> | <comp_exp> ">=" <add_exp> | <comp_exp> "<" <add_exp> | <comp_exp> "<=" <add_exp> 
+
+<relaion_exp> ::= <comp_exp> | <relaion_exp> "==" <comp_exp> | <relaion_exp> "!=" <comp_exp>
+
+<bitw_and> ::= <relaion_exp> | <bitw_and> "&" <relaion_exp>
+
+<bitw_xor> ::= <bitw_and> | <bitw_xor> "^" <bitw_and>
+
+<bitw_or> ::= <bitw_xor> | <bitw_or> "|" <bitw_xor>
+
+<log_and> ::= <bitw_or> | <log_and> "&&" <bitw_or>
+
+<log_or> ::= <log_and> | <log_or> "||" <log_and>
+
+<epxression> ::= <log_or>
+
+<block_statemant> ::= "{" <end_of_line>? <statement_list> <end_of_line>? "}" <end_of_line>? | "{" <end_of_line>* "}"
+
+<decalration> ::= "let" <whitespace> <idnetifier> <whitespace>? <assignment_operator> <whitespace>? <integer> ";" <end_of_line>?
+
+<argument> ::= <idnetifier> <whitespace>? "," <whitespace>? <argument> | <idnetifier>
+
+<idnetifier> ::= ( [a-z] | [A-Z] ) ( [a-z] | [A-Z] | "_" | [0-9])+ | ( [a-z] | [A-Z] )
+
+<assignment_operator> ::= "=" 
+
+<whitespace> ::= " "
+
+<end_of_line> ::= "\n"
+
+<integer> ::= [0-9]+
