@@ -1,14 +1,16 @@
 <translation_unit> ::= <function> | <function> <translation_unit>
 
-<function> ::= "fn" <whitespace> <idnetifier> "(" <argument>* <whitespace>? ")" <whitespace>? <block_statemant> <end_of_line>?
+<function> ::= "fn" <idnetifier> "(" <argument>* ")" <block_statemant>
+
+<block_statemant> ::= "{" <statement_list> "}"  | "{" "}"
 
 <statement_list> ::= <statement> | <statement> <statement_list>
 
 <statement> ::= <decalration> | <if_statemnt> | <return> 
 
-<return> ::= "return" <whitespace>? <epxression> ";"
+<return> ::= "return"  <epxression> ";"
 
-<if_statemnt> ::= "if" <whitespace>? <epxression> <whitespace>? <block_statemant> | "if" <whitespace>? <epxression> <whitespace>? <block_statemant> <whitespace>? "else" <block_statemant>
+<if_statemnt> ::= "if"  <epxression>  <block_statemant> | "if" <epxression> <block_statemant>  "else" <block_statemant>
 
 <primary_exp> ::= <idnetifier> | <integer> | "(" <epxression> ")"
 
@@ -38,18 +40,13 @@
 
 <epxression> ::= <log_or>
 
-<block_statemant> ::= "{" <end_of_line>? <statement_list> <end_of_line>? "}" <end_of_line>? | "{" <end_of_line>* "}"
 
-<decalration> ::= "let" <whitespace> <idnetifier> <whitespace>? <assignment_operator> <whitespace>? <integer> ";" <end_of_line>?
+<decalration> ::= "let"  <idnetifier>  <assignment_operator>  <integer> ";" 
 
-<argument> ::= <idnetifier> <whitespace>? "," <whitespace>? <argument> | <idnetifier>
+<argument> ::= <idnetifier>  ","  <argument> | <idnetifier>
 
 <idnetifier> ::= ( [a-z] | [A-Z] ) ( [a-z] | [A-Z] | "_" | [0-9])+ | ( [a-z] | [A-Z] )
 
 <assignment_operator> ::= "=" 
-
-<whitespace> ::= " "
-
-<end_of_line> ::= "\n"
 
 <integer> ::= [0-9]+
