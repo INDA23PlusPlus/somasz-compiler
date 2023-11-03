@@ -3,7 +3,7 @@ use std::fs::*;
 use std::io::prelude::*;
 use std::io::BufReader;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Copy)]
 
 pub enum BinOpType {
     Plus,
@@ -23,8 +23,7 @@ pub enum BinOpType {
     LogAnd,
     LogOr,
 }
-#[derive(Debug, Clone)]
-
+#[derive(Debug, Clone, Copy)]
 pub enum UnanyOpType {
     Compl,
     Not,
@@ -57,7 +56,7 @@ pub struct Token {
     pub t_type: TokenType,
 }
 pub fn lexer() -> std::io::Result<Vec<Token>> {
-    let mut file = File::open("test.txt")?;
+    let mut file = File::open("./test.txt")?;
     let mut contents = String::new();
     file.read_to_string(&mut contents)?;
     let mut pointer: usize = 0;

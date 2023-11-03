@@ -1,9 +1,12 @@
-use lexer::{lexer, Token};
+use lexer::lexer;
+use parser::parser;
 mod lexer;
 mod parser;
 fn main() {
-    let tokens = lexer();
-    println!("{:?}", tokens.unwrap());
-}
+    let tokens = lexer().unwrap();
+    println!("{:?}", tokens);
 
-fn parser(tokens: Vec<Token>) {}
+    let ast = parser(&tokens);
+
+    println!("{:?}", ast);
+}
